@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2A2118">
+<title>How we know: the Pakistan 2022 floods</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232A2118'/%3E%3Cpath d='M4 20q4-5 8 0t8 0 8 0v8H4z' fill='%23C97F00'/%3E%3C/svg%3E">
+<script>try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<style>
+:root{--ground:#F5EFE4;--panel:#FFFBF3;--ink:#2A2118;--muted:#6B5F52;--rule:#E3D8C6;--grid:#EDE3D2;--focus:#3F51B5;--ns:#E3D8C6;--a:#0E7C7B;--b:#C2185B;--obs:#3F51B5;--mod:#C97F00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ground:#17130F;--panel:#211B15;--ink:#F1E8DA;--muted:#B3A692;--rule:#3A3027;--grid:#2A231B;--focus:#9FA8DA;--ns:#3A3027;--a:#3FC1BF;--b:#F06292;--obs:#8C9EFF;--mod:#F2B134}}
+:root[data-theme="dark"]{--ground:#17130F;--panel:#211B15;--ink:#F1E8DA;--muted:#B3A692;--rule:#3A3027;--grid:#2A231B;--focus:#9FA8DA;--ns:#3A3027;--a:#3FC1BF;--b:#F06292;--obs:#8C9EFF;--mod:#F2B134}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px;line-height:1.5;font-variant-numeric:tabular-nums}
+main{max-width:1180px;margin:0 auto;padding:28px 20px 60px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.lede{color:var(--muted);margin:0 0 6px;max-width:75ch}
+nav a,button.theme{font:inherit;font-size:13px;color:var(--ink);border:1px solid var(--rule);background:var(--panel);border-radius:999px;padding:6px 12px;text-decoration:none;cursor:pointer}
+nav a:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+section{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:20px 22px;margin-top:22px}
+h2{font-size:16px;margin:0 0 4px}
+h3{font-size:13.5px;margin:18px 0 4px}
+.sub{color:var(--muted);font-size:13px;margin:0 0 14px;max-width:85ch}
+table{border-collapse:collapse;font-size:13px;min-width:520px}
+th,td{padding:7px 12px;border-top:1px solid var(--rule);text-align:right;vertical-align:top}
+th:first-child,td:first-child{text-align:left}
+td.l,th.l{text-align:left}
+thead th{border-top:0;color:var(--muted);font-weight:600;font-size:12px}
+td.us{font-weight:600}
+td small{display:block;color:var(--muted);font-size:11px;font-weight:400}
+.grid4{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.mapcard h3{font-size:13px;margin:0 0 2px;font-weight:600}
+.mapcard h3.obs{color:var(--obs)} .mapcard h3.mod{color:var(--mod)}
+.mapcard p{margin:0 0 6px;color:var(--muted);font-size:11.5px;min-height:3.2em}
+.mapcard svg{width:100%;height:auto;display:block;background:var(--ground);border:1px solid var(--rule);border-radius:6px}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.stats div{border-top:3px solid var(--obs);padding-top:6px}
+.stats div.mod{border-color:var(--mod)}
+.stats strong{display:block;font-size:22px;font-weight:700;line-height:1.1}
+.stats span{color:var(--muted);font-size:12px}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.chain{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:0;padding:0;list-style:none;counter-reset:s}
+.chain li{border:1px solid var(--rule);border-radius:10px;padding:10px 12px;font-size:12.5px;counter-increment:s;background:var(--ground)}
+.chain li::before{content:counter(s);display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--ink);color:var(--panel);font-size:11px;font-weight:700;margin-right:6px}
+.chain b{font-weight:600}
+.chain small{display:block;color:var(--muted);font-size:11.5px;margin-top:4px}
+.chain li.mod{border-color:var(--mod)}
+@media (max-width:700px){
+  main{padding:16px max(12px,env(safe-area-inset-left)) calc(40px + env(safe-area-inset-bottom))}
+  section{padding:14px 12px;border-radius:10px}
+  h1{font-size:21px}
+  .grid4{grid-template-columns:1fr 1fr;gap:10px}
+  .scroll::before{content:"Swipe sideways to see all of it →";display:block;font-size:11.5px;color:var(--muted);margin-bottom:6px}
+}
+.note{background:color-mix(in srgb,var(--focus) 8%,transparent);border-left:3px solid var(--focus);padding:10px 14px;font-size:13px;margin-top:14px;max-width:95ch}
+.note.mod{border-color:var(--mod);background:color-mix(in srgb,var(--mod) 9%,transparent)}
+.note.bad{border-color:var(--b);background:color-mix(in srgb,var(--b) 8%,transparent)}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:1px 8px;border-radius:999px;border:1px solid var(--rule);white-space:nowrap}
+.tag.ok{color:#1a7f4b;border-color:#1a7f4b} .tag.part{color:#a66a00;border-color:#a66a00} .tag.no{color:#b3261e;border-color:#b3261e}
+.tip{position:fixed;pointer-events:none;background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:6px 9px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.15);display:none;z-index:5}
+.sw{display:inline-block;width:14px;height:9px;margin-right:5px;vertical-align:-1px;border-radius:2px}
+.key{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:4px 0 8px}
+ul.plain{margin:6px 0 0 18px;padding:0}
+ul.plain li{margin:3px 0}
+code{font-size:12px;background:var(--ground);border:1px solid var(--rule);border-radius:4px;padding:0 4px}
+a{color:var(--ink)}
+.src{color:var(--muted);font-size:11.5px;margin-top:6px}
+#loaderr{display:none}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>How we know</h1>
+      <p class="lede" id="lede">Loading…</p>
+    </div>
+    <nav style="display:flex;gap:8px"><a href="../">← Back to the map</a><button class="theme" id="theme"></button></nav>
+  </header>
+  <div class="note bad" id="loaderr"></div>
+
+  <section>
+    <h2>The short version</h2>
+    <p class="sub">Nothing on this page is typed in by hand: each figure is read from <code>data/facts.json</code>, which was extracted from the run log and the output tables. The grey note under each block names its source file.</p>
+    <div class="stats" id="stats"></div>
+  </section>
+
+  <section>
+    <h2>What satellites saw, and what a model computes</h2>
+    <p class="sub">These are two kinds of evidence and the site keeps them apart. <b>Seen from space</b>: floodwater detected by satellite between 1 July and 31 August 2022 (UNOSAT, VIIRS, pixels of about 375 m, not checked on the ground). <b>Computed</b>: river floods of a chosen likelihood, once in 10, 100 or 500 years, from the Copernicus GloFAS global model. The model describes a flood of a given odds, not the one that happened. The panels show the same 16 km window around <span id="winname"></span>, the tehsil with the most flooded mapped buildings (the most exposed tehsil has almost none mapped). Solid indigo is what satellites saw; amber hatching is what the model computes.</p>
+    <div class="key"><span><i class="sw" style="background:rgba(63,81,181,.5);border:1px solid #2A3990"></i>satellite water</span><span><i class="sw" style="background:repeating-linear-gradient(45deg,var(--mod) 0 1.5px,transparent 1.5px 4px);border:1px dashed var(--mod)"></i>model floodplain</span><span><i class="sw" style="background:#D32F2F"></i>wet building the model also floods</span><span><i class="sw" style="background:#6D4C41"></i>wet building the model misses</span><span><i class="sw" style="background:#9a9a9a"></i>other home-like building</span></div>
+    <div class="grid4" id="small"></div>
+    <div class="note">OpenStreetMap is sparse here, so these panels show where buildings are mapped, not where people live.</div>
+    <h3>How well does each model flood match the satellite picture?</h3>
+    <p class="sub">Area: the share of the observed flood area that falls inside the scenario area, and the share of the scenario area that was flooded in 2022 (Pakistan only). Buildings: the share of the OSM residential-like buildings inside the observed extent whose centre pixel, or any of the 3 × 3 pixels around it (about ±90 m, the analogue of the footprint buffer in the Dutch comparison), has a modelled depth of 0.1 m or more.</p>
+    <div class="scroll"><table id="jrctbl"></table></div>
+    <div class="src">Source: outputs/modelled_vs_observed.csv (script 03_modelled_hazard.py)</div>
+    <div class="note mod">The scenario is a river-flood model; the 2022 event was a monsoon flood with rain-fed and river flooding on a very flat plain. A scenario that matches the observed area well is not evidence that it predicts a given dwelling. Neither layer has an observed depth: the observed product has no depth, and the scenario depth is for the scenario only.</div>
+  </section>
+
+  <section>
+    <h2>From download to map: the nine steps</h2>
+    <p class="sub">Each step is a script in <code>pk_verification/scripts</code>, run in this order. Amber outlines mark the steps that deal with the flood model.</p>
+    <ol class="chain" id="chain"></ol>
+  </section>
+
+  <section>
+    <h2>Three ways to count people in the water</h2>
+    <p class="sub">The population is a modelled 100 m grid (WorldPop 2020), the flood is a polygon, and buildings come from OpenStreetMap. The three methods use the same inputs and differ in how they place people inside a cell.</p>
+    <div class="scroll"><table id="methtbl"></table></div>
+    <div class="src">Source: logs/run.log (06_grid_exposure.py)</div>
+    <h3>By province or territory (tehsils touching the extent)</h3>
+    <div class="scroll"><table id="provtbl"></table></div>
+    <div class="src">Source: outputs/tehsil_dataset.csv</div>
+    <h3>Where the exposed people are (area-weighted, A)</h3>
+    <div id="top10"></div>
+    <div class="src">Source: outputs/top10_exposed_tehsils.csv. The five most exposed tehsils hold <span id="top5"></span> of all A-exposed people; <span id="zeroc"></span> of the study tehsils have none.</div>
+  </section>
+
+  <section>
+    <h2>How much to trust each input</h2>
+    <h3>Population: modelled, not a census count</h3>
+    <p class="sub">WorldPop 2020 (100 m) is a statistical model of where people live, constrained to totals but not a count of people. Against the 2017 census totals of the tehsils in the study, the WorldPop sum is <b id="wpratio"></b> times as large (the years differ) and the two correlate at <b id="wpcorr"></b> across tehsils on a log scale.</p>
+    <h3>Buildings: OpenStreetMap is incomplete</h3>
+    <p class="sub">The OSM export has <b id="osmn"></b> buildings for the whole of Pakistan. In the study tehsils there are a median of <b id="osmmed"></b> mapped residential-like buildings per 1,000 WorldPop people (national: <b id="osmnat"></b>), and <b id="osmzero"></b> study tehsils have none. Where a 100 m cell has no mapped building, method C counts the whole cell if its centre is in the extent, and <b id="fb"></b> of the people exposed under method B live in such cells. The building layer is therefore a lower bound and says nothing about housing type or storeys here.</p>
+    <h3>Flood extent: satellite water detection</h3>
+    <p class="sub">VIIRS has about 375 m pixels and the product is cumulative over two months and not field validated, so it describes where water was seen at some point, not the maximum depth or duration. Water under cloud or dense cover can be missed.</p>
+    <h3>Census: tehsil level, 2017</h3>
+    <p class="sub">The smallest area with public age data is the tehsil. The 2023 census has block-level data internally, but no download or boundary file was found. Age on the map is therefore a tehsil-level proxy from 2017.</p>
+  </section>
+
+  <section>
+    <h2>Can a regression explain who was exposed?</h2>
+    <p class="sub">The same tests as the Dutch run, on tehsils with complete predictors (65+, 0–14, 15–24, female share, household size, log density, mean elevation). Response: the area-weighted share of the tehsil's people inside the observed extent.</p>
+    <div class="scroll"><table id="regtbl"></table></div>
+    <div class="src">Source: logs/run.log (07_tehsil_dataset_and_diagnostics.py)</div>
+    <h3>Distribution of the response across the <span id="nc"></span> complete cases</h3>
+    <div class="key"><span>Share of the tehsil's people inside the flood extent, in bins of 5 percentage points. The bar at 0 is cut at the top.</span></div>
+    <svg id="hist" viewBox="0 0 640 200" style="width:100%;max-width:760px;height:auto" role="img" aria-label="Histogram of the exposed share of people per tehsil"></svg>
+    <div class="src">Source: outputs/regression_sample.csv</div>
+    <div class="note">What the numbers say: unlike the Dutch sample, a regression is technically possible here. There are <span id="nc2"></span> tehsils with complete data, almost none with zero exposure, and a local model fits the response closely. That fit should be read carefully. The response is itself derived from a raster and a flood polygon, it is strongly clustered in space (Moran's I above), and the strongest single association is with elevation (Spearman in the table). A local regression would largely describe where the flood was, not why people were exposed. The vulnerability predictors available at tehsil level are few (age, household size, density), and none of health, income or housing quality was obtained.</div>
+    <h3>Collinearity (VIF), rank correlation and logit for more than 1% exposed</h3>
+    <div class="scroll"><table id="viftbl"></table></div>
+    <div class="src">Source: outputs/vif.csv, outputs/logit_any_exposure.csv; Spearman recomputed from outputs/regression_sample.csv.</div>
+  </section>
+
+  <section>
+    <h2>What we looked for and could not get</h2>
+    <p class="sub">Variables that matter for vulnerability and were looked for but not found as open, small-area data, or not used here (see the earlier Pakistan data audit).</p>
+    <div class="scroll"><table id="gaptbl"></table></div>
+  </section>
+
+  <section>
+    <h2>Before you quote a number</h2>
+    <ul class="plain" id="limits"></ul>
+    <h3>Things that make a re-run awkward</h3>
+    <ul class="plain" id="frict"></ul>
+    <p class="sub" style="margin-top:12px">Display note: the layers on the map (modelled areas and depth classes, flooded-building points, 2 km cells, tehsil outlines, terrain) are simplified or aggregated copies made by <code>build/build_pk_assets.py</code> and <code>08_web_hazard_layers.py</code> so a browser can draw them. No figure on this page or on the map is computed from them.</p>
+  </section>
+
+  <section>
+    <h2>Where the data came from</h2>
+    <p class="sub">All files below were downloaded and opened in the run. Sizes are the sizes of the files as downloaded.</p>
+    <div class="scroll"><table id="srctbl"></table></div>
+    <div class="src">Basemap © OpenStreetMap contributors © CARTO.</div>
+  </section>
+</main>
+<div class="tip" id="tip"></div>
+<script>
+(function(){
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const DARK=css('--ground').toLowerCase()==='#17130f';
+const $=id=>document.getElementById(id);
+const tb=$('theme');tb.textContent=DARK?'☀ Light mode':'☾ Dark mode';
+tb.onclick=()=>{try{localStorage.setItem('theme',DARK?'light':'dark');}catch(e){}location.reload();};
+const tip=$('tip');
+const showTip=(e,h)=>{tip.style.display='block';tip.style.left=(e.clientX+14)+'px';tip.style.top=(e.clientY+14)+'px';tip.innerHTML=h;};
+const hideTip=()=>tip.style.display='none';
+const n0=v=>Math.round(v).toLocaleString(), p0=v=>(v*100).toFixed(0)+'%', p1=v=>(v*100).toFixed(1)+'%';
+Promise.all([fetch('../data/facts.json').then(r=>r.json()),fetch('../data/window.json').then(r=>r.json())]).then(([F,W])=>{
+const f=k=>F[k].v;
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const table=(sel,head,rows,opt={})=>{const t=d3.select(sel);t.html('');
+  t.append('thead').append('tr').selectAll('th').data(head).join('th').attr('class',(d,i)=>opt.left&&opt.left.includes(i)?'l':null).text(d=>d);
+  t.append('tbody').selectAll('tr').data(rows).join('tr').selectAll('td').data(r=>r).join('td').attr('class',(d,i)=>(opt.left&&opt.left.includes(i)?'l ':'')+(opt.us&&opt.us.includes(i)?'us':'')).html(d=>d);};
+$('lede').textContent=`The 2022 monsoon floods, step by step: how ${f('n_study')} tehsils, a modelled population of ${f('wp_total').toLocaleString()}, ${f('osm_total').toLocaleString()} mapped buildings and two different kinds of flood evidence were put together, what each step costs in accuracy, and where the method runs out.`;
+const J=Object.fromEntries(F.jrc.v.map(r=>[r.RP,r]));
+const stat=(v,l,cls)=>`<div class="${cls||''}"><strong>${v}</strong><span>${l}</span></div>`;
+$('stats').innerHTML=[
+  stat(`${f('n_study')} of ${f('n_tehsil')}`,'tehsils touch the observed flood water'),
+  stat(n0(f('extent_km2'))+' km²','observed flood water, 1 Jul to 31 Aug 2022'),
+  stat(n0(f('exp_A')),'people in the extent, area-weighted (A)'),
+  stat(n0(f('exp_B')),'people in the extent, cell centre (B)'),
+  stat(n0(f('exp_C')),'people in the extent, building-allocated (C)'),
+  stat(n0(f('osm_res_in_extent')),'residential-like OSM buildings in the extent'),
+  stat(p0(J[100].share_caught_3x3),'of those caught by the 100-year scenario (±90 m)','mod'),
+  stat(p0(J[100].frac_obs_area_covered),'of the observed area inside the 100-year scenario','mod')
+].join('');
+// ---- small multiples, planar projection of metres
+$('winname').textContent=`${W.name} (${W.prov})`;
+const half=W.R,cx=W.center[0],cy=W.center[1],S=300;
+const box={type:'Polygon',coordinates:[[[cx-half,cy-half],[cx+half,cy-half],[cx+half,cy+half],[cx-half,cy+half],[cx-half,cy-half]]]};
+const proj=d3.geoIdentity().reflectY(true).fitSize([S,S],box),path=d3.geoPath(proj);
+const gj=g=>({type:g.t,coordinates:g.c});
+const fl=W.bld.filter(b=>b.k===2);
+const panels=[
+  {h:'OSM buildings in the window',cls:'',p:`${n0(W.bld.length)} buildings mapped; ${fl.length} residential-like ones flooded in 2022`,mode:'class'},
+  {h:'Observed extent, 2022',cls:'obs',p:'UNOSAT, VIIRS, preliminary',mode:'class',obs:true}
+].concat([10,100,500].map((T,i)=>({h:`Modelled, ${T}-year`,cls:'mod',p:`${fl.filter(b=>b.cap[i]).length} of the ${fl.length} flooded buildings in this window are inside the scenario (centre pixel or neighbours)`,mode:'cap',ror:'ror'+T,ci:i})));
+const card=d3.select('#small').selectAll('div').data(panels).join('div').attr('class','mapcard');
+card.append('h3').attr('class',d=>d.cls).text(d=>d.h);card.append('p').text(d=>d.p);
+const defs=d3.select('body').append('svg').attr('width',0).attr('height',0).style('position','absolute').append('defs');
+defs.append('pattern').attr('id','hatch').attr('width',6).attr('height',6).attr('patternUnits','userSpaceOnUse').attr('patternTransform','rotate(45)').append('line').attr('x1',0).attr('y1',0).attr('x2',0).attr('y2',6).attr('stroke',css('--mod')).attr('stroke-width',2);
+card.each(function(d){
+  const svg=d3.select(this).append('svg').attr('viewBox',`0 0 ${S} ${S}`).attr('role','img').attr('aria-label',d.h);
+  if(d.obs)W.obs.forEach(g=>svg.append('path').attr('d',path(gj(g))).attr('fill',css('--obs')).attr('fill-opacity',.4).attr('stroke','#2A3990').attr('stroke-width',.6));
+  if(d.ror)(W[d.ror]||[]).forEach(g=>svg.append('path').attr('d',path(gj(g))).attr('fill','url(#hatch)').attr('stroke',css('--mod')).attr('stroke-width',1).attr('stroke-dasharray','4 2'));
+  const col=b=>{if(d.mode==='cap')return b.k===2?(b.cap[d.ci]?'#D32F2F':'#6D4C41'):b.k===1?'#9a9a9a':null;
+    return b.k===2?'#D32F2F':b.k===3?'#8c564b':b.k===1?'#9a9a9a':(DARK?'#4a4f4d':'#d0d0d0');};
+  const g=svg.append('g');
+  W.bld.forEach(b=>{const c=col(b);if(!c)return;g.append('path').attr('d',path(gj(b.g))).attr('fill',c).attr('stroke',c).attr('stroke-width',.4);});
+  const L=2000/(2*half)*S;
+  svg.append('line').attr('x1',8).attr('x2',8+L).attr('y1',S-10).attr('y2',S-10).attr('stroke','var(--ink)').attr('stroke-width',2);
+  svg.append('text').attr('x',8).attr('y',S-15).attr('font-size',9).attr('fill','var(--muted)').text('2 km');
+});
+// ---- jrc table
+table('#jrctbl',['Scenario','Scenario area (Pakistan)','Overlap with observed','Observed area covered','Scenario area flooded in 2022','Buildings caught, centre pixel','Buildings caught, ±1 pixel'],
+  [10,100,500].map(r=>{const x=J[r];return [`${r}-year river flood`,n0(x.modelled_area_km2)+' km²',n0(x.overlap_km2)+' km²',p0(x.frac_obs_area_covered),p0(x.frac_model_area_flooded_in_2022),`${p1(x.share_caught_centroid)}<small>${n0(x.caught_centroid)} of ${n0(x.obs_flooded_res_bldg)}</small>`,`${p1(x.share_caught_3x3)}<small>${n0(x.caught_3x3)} of ${n0(x.obs_flooded_res_bldg)}</small>`];}),{us:[6]});
+// ---- chain
+const CH=[
+ ['Raw data','00_download.sh, 00b_download_jrc.sh','HDX, WorldPop, JRC downloads (curl)',false],
+ ['Study area','01_flood_and_study_area.py',`${f('n_study')} of ${f('n_tehsil')} tehsils touch the extent; 2017 census tables joined`,false],
+ ['Buildings (OSM)','02_buildings.py',`${f('osm_total').toLocaleString()} buildings; ${f('osm_in_extent').toLocaleString()} in the extent`,false],
+ ['Modelled hazard','03_modelled_hazard.py','JRC depth, 10, 100, 500-year, against the observed extent',true],
+ ['Terrain','04_environment.py','Terrain tiles, mean elevation per tehsil, hillshade',false],
+ ['Grid exposure','06_grid_exposure.py','WorldPop 100 m: methods A, B, C and modelled exposure',false],
+ ['Tehsil dataset + models','07_tehsil_dataset_and_diagnostics.py',`Census 2017 profile; OLS, logit, Moran, GWR, MGWR on ${f('n_complete')} complete cases`,false],
+ ['Web layers','08_web_hazard_layers.py','Display copies of the modelled layers',true],
+ ['Map and summary','build/build_pk_assets.py','2 km cells, tehsil outlines, facts.json',false]];
+d3.select('#chain').selectAll('li').data(CH).join('li').attr('class',d=>d[3]?'mod':null).html(d=>`<b>${esc(d[0])}</b><small><code>${esc(d[1])}</code></small><small>${esc(d[2])}</small>`);
+// ---- methods
+table('#methtbl',['Method','Exposed people','How'],[
+  ['A. Area-weighted',n0(f('exp_A')),'Cell people × the share of the cell inside the extent (4 × 4 sub-sampling). Assumes people are spread evenly in the cell.'],
+  ['B. Cell centre',n0(f('exp_B')),'All people of a cell whose centre is inside the extent.'],
+  ['C. Building-allocated',n0(f('exp_C')),`Cell people × (flooded OSM buildings ÷ mapped buildings in the cell); cells with no mapped building fall back to B (${n0(f('exp_fallback'))} people, ${f('fallback_share')}% of B in the study tehsils).`]
+],{left:[0,2],us:[1]});
+table('#provtbl',['Province or territory','Tehsils','People (WorldPop)','Exposed (A)','Exposed (B)','Exposed (C)','Share (A)'],F.by_province.v.map(r=>[esc(r.ADM1_NAME.replace(/\b(\w)(\w*)/g,(m,a,b)=>a+b.toLowerCase())),r.tehsils,n0(r.pop_wp),n0(r.popA),n0(r.popB),n0(r.popC),p1(r.popA/r.pop_wp)]));
+{const rows=F.top10.v,w=d3.scaleLinear().domain([0,d3.max(rows,r=>r.popA)]).range([0,240]);
+ $('top10').innerHTML=`<div class="scroll"><table style="min-width:600px"><thead><tr><th>Tehsil</th><th class="l">District, province</th><th>Census 2017</th><th>Exposed (A)</th><th>Exposed (B)</th><th>Exposed (C)</th><th>Share (A)</th><th class="l"></th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(r.name.replace(/ (SUB-)?TEHSIL/,'').replace(/\b(\w)(\w*)/g,(m,a,b)=>a+b.toLowerCase()))}</td><td class="l">${esc(r.ADM3_NAME.replace(' DISTRICT','').replace(/\b(\w)(\w*)/g,(m,a,b)=>a+b.toLowerCase()))}, ${esc(r.ADM1_NAME.replace(/\b(\w)(\w*)/g,(m,a,b)=>a+b.toLowerCase()))}</td><td>${n0(r.pop_census2017)}</td><td class="us">${n0(r.popA)}</td><td>${n0(r.popB)}</td><td>${n0(r.popC)}</td><td>${p0(r.share_A)}</td><td class="l"><svg width="250" height="12"><rect width="${w(r.popA)}" height="10" rx="2" fill="var(--obs)"/></svg></td></tr>`).join('')}</tbody></table></div>`;}
+$('top5').textContent=f('top5').toFixed(1)+'%';$('zeroc').textContent=f('zero_A');
+$('wpratio').textContent=f('wp_over_census').toFixed(2);$('wpcorr').textContent=f('wp_census_corr').toFixed(3);
+$('osmn').textContent=f('osm_total').toLocaleString();$('osmmed').textContent=f('osm_per1000_med').toFixed(1);$('osmnat').textContent=f('osm_per1000_nat').toFixed(1);$('osmzero').textContent=f('osm_zero_tehsils');$('fb').textContent=f('fallback_share')+'%';
+// ---- regression
+table('#regtbl',['Check','Value','Reading'],[
+ ['Tehsils with the response and all predictors',f('n_complete'),`of ${f('n_study')} tehsils in the study`],
+ ['Tehsils with zero exposure',`${f('resp_zero')} (${f('resp_zero_pct')}%)`,'Selected because they touch the flood, many only at an edge'],
+ ['Skewness / kurtosis of the response',`${f('resp_skew')} / ${f('resp_kurt')}`,'Heavy tail: a few tehsils carry much of the exposure'],
+ ['OLS R² / adjusted R²',`${f('ols_r2')} / ${f('ols_adjr2')}`,''],
+ ['GWR bandwidth',`${f('gwr_bw')} of ${f('n_complete')} neighbours`,''],
+ ['GWR R² / adj. R² / AICc',`${f('gwr_r2')} / ${f('gwr_adjr2')} / ${f('gwr_aicc')}`,''],
+ ['MGWR R² / adj. R² / AICc',F.mgwr_r2?`${f('mgwr_r2')} / ${f('mgwr_adjr2')} / ${f('mgwr_aicc')}`:'not completed',''],
+ ["Moran's I of the response",`${f('moran_resp')} (p = ${f('moran_resp_p')})`,`OLS residuals: ${f('moran_resid')}`],
+ ['Logit for more than 1% exposed, pseudo R²',f('logit_pseudo_r2'),`${f('logit_events')} events`]
+],{left:[0,2]});
+$('nc').textContent=f('n_complete');$('nc2').textContent=f('n_complete');
+{const v=F.hist.v,bins=d3.bin().domain([0,1.0001]).thresholds(d3.range(.05,1,.05))(v),W_=640,H_=200,x=d3.scaleLinear().domain([0,1]).range([40,W_-10]),
+   y=d3.scaleLinear().domain([0,d3.max(bins.slice(1),b=>b.length)*1.3||1]).range([H_-26,6]);
+ const svg=d3.select('#hist');
+ bins.forEach((b,i)=>{const hh=Math.min(y(0)-y(b.length),y(0)-6);svg.append('rect').attr('x',x(b.x0)+1).attr('y',y(0)-hh).attr('width',Math.max(1,x(Math.min(1,b.x1))-x(b.x0)-2)).attr('height',hh).attr('fill',i===0?'var(--b)':'var(--obs)').attr('fill-opacity',.8)
+   .on('mousemove',e=>showTip(e,`${(b.x0*100).toFixed(0)}–${(Math.min(1,b.x1)*100).toFixed(0)}% exposed: <strong>${b.length}</strong> tehsils`)).on('mouseleave',hideTip);});
+ svg.append('text').attr('x',x(.05)+4).attr('y',16).attr('font-size',10.5).attr('fill','var(--b)').text(`${bins[0].length} tehsils (${p0(bins[0].length/v.length)}) are below 5%, bar cut`);
+ d3.range(0,1.01,.25).forEach(t=>svg.append('text').attr('x',x(t)).attr('y',H_-8).attr('text-anchor','middle').attr('font-size',10).attr('fill','var(--muted)').text(p0(t)));
+ svg.append('line').attr('x1',40).attr('x2',W_-10).attr('y1',y(0)).attr('y2',y(0)).attr('stroke','var(--rule)');}
+{const names={pct_65p:'Aged 65+',pct_0_14:'Aged 0–14',pct_15_24:'Aged 15–24',pct_female:'Female share',hh_size:'Household size',density:'Density (log)',elev_mean:'Mean elevation'};
+ const lg=Object.fromEntries(F.logit.v.map(r=>[r.name,r])),vf=Object.fromEntries(F.vif.v.map(r=>[r.name,r.VIF])),sp=F.spearman.v;
+ table('#viftbl',['Predictor','VIF','Spearman with exposure','Logit coefficient (z-scored)','p'],Object.keys(names).map(k=>[names[k],vf[k].toFixed(2),sp[k].toFixed(3),lg[k].coef.toFixed(3),lg[k].p<.001?'&lt; 0.001':lg[k].p.toFixed(3)]));}
+// ---- gaps
+const tag=s=>s.split(' / ').map(x=>`<span class="tag ${/^AVAILABLE$/.test(x)?'ok':/NOT FOUND|UNKNOWN|NOT USED/.test(x)?'no':'part'}">${x}</span>`).join(' ');
+table('#gaptbl',['Needed for','What was found','Status'],[
+ ['Population at block or SA1 level','No public block or enumeration-area polygons with counts; the smallest public unit with age data is the tehsil (2017)','PARTIAL'],
+ ['Address or dwelling points','None; OSM buildings are incomplete','PARTIAL'],
+ ['Observed flood depth','None for the event maximum; UNOSAT published a single-date depth product for Sindh and Balochistan (29 Nov 2022) that was not used','NOT USED'],
+ ['Health, disability, vehicle access','Not in the 2017 tables used; a 2023 district report has disability tables as PDF, not used','NOT FOUND'],
+ ['Income or a deprivation index','Only a district-level multidimensional poverty index; not used','NOT FOUND'],
+ ['Land cover, soil, roads, water, tree canopy','Not obtained in this run','NOT USED'],
+ ['Catchments and drainage hierarchy','No open fine-scale data found','NOT FOUND'],
+ ['Historical event series','One event (2022); older UNOSAT local extents are patchy','PARTIAL']
+].map(r=>[r[0],r[1],tag(r[2])]),{left:[0,1,2]});
+d3.select('#limits').selectAll('li').data([
+ 'The observed extent is satellite water detection at about 375 m, cumulative over two months, preliminary and not field validated. It can miss water under cloud or in dense settlements and cannot say how deep or how long.',
+ 'Exposure is not impact. A person or building inside the extent may not have been affected, and nothing here measures damage, displacement or deaths.',
+ 'WorldPop is a model of where people live in 2020, not a count. Exposed people depend on how it spreads a tehsil total over cells.',
+ 'OSM buildings are incomplete and the export is from 2026; no 2022 snapshot exists. Building counts are lower bounds, and the building-allocated method rests on them where they exist.',
+ 'The modelled scenarios are global river-flood design maps at about 90 m, and they can carry very high depths from known model artefacts. They are not the 2022 event.',
+ 'Age and household profile come from the 2017 census at tehsil level and are applied to people placed by a 2020 model (ecological fallacy, mixed years).',
+ 'Tehsil boundaries are the 2017 compilation; district and tehsil changes since then are not reflected. Four tehsil polygons needed geometry repair.',
+ 'Terrain tiles are a mixed-source DEM with metre-level vertical accuracy, not a LiDAR terrain model; a few tehsil elevation minima are negative, a data artefact.',
+ 'Units were chosen because they touch the flood, so any regression is conditional on exposure.'
+]).join('li').text(d=>d);
+d3.select('#frict').selectAll('li').data([
+ 'The WorldPop file is 544 MB and downloaded slowly; the other sources were small. All downloads are scripted with curl and resume-safe by skipping files that exist.',
+ 'Humanitarian Data Exchange links can change; each URL used is listed in the sources table.',
+ 'The scenario tiles must be matched to the tile grid: the Pakistan area needs four 10° tiles per return period, and the areas reported are clipped to the national outline because the tiles also cover neighbouring countries.',
+ 'The OSM export is a snapshot on the date shown, so a re-run later gives different building counts.'
+]).join('li').text(d=>d);
+// ---- sources
+table('#srctbl',['Dataset','Provider','Format','Features','Size','Licence','Address'],F.inventory.v.map(r=>{
+  const label=esc(r.url);
+  return [esc(r.dataset),esc(r.provider),esc(r.format),esc(r.features),r.size_MB>=1?r.size_MB.toLocaleString(undefined,{maximumFractionDigits:1})+' MB':(r.size_MB>0?'<1 MB':'tiles'),esc(r.licence),`<a href="${esc(r.url)}" rel="noopener">${label}</a>`];}),{left:[0,1,2,5,6]});
+}).catch(e=>{const n=$('loaderr');n.style.display='block';n.textContent='The data files could not be loaded ('+e.message+'). Serve the pk_site folder over HTTP, for example with: python -m http.server';console.error(e);});
+})();
+</script>
+</body>
+</html>
