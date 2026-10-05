@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#2A2118">
-<title>How we know: the Pakistan 2022 floods</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232A2118'/%3E%3Cpath d='M4 20q4-5 8 0t8 0 8 0v8H4z' fill='%23C97F00'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#14213D">
+<title>Sources and method: Pakistan floods, 2022</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314213D'/%3E%3Cpath d='M4 20q4-5 8 0t8 0 8 0v8H4z' fill='%23C97F00'/%3E%3C/svg%3E">
 <script>try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <style>
-:root{--ground:#F5EFE4;--panel:#FFFBF3;--ink:#2A2118;--muted:#6B5F52;--rule:#E3D8C6;--grid:#EDE3D2;--focus:#3F51B5;--ns:#E3D8C6;--a:#0E7C7B;--b:#C2185B;--obs:#3F51B5;--mod:#C97F00}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ground:#17130F;--panel:#211B15;--ink:#F1E8DA;--muted:#B3A692;--rule:#3A3027;--grid:#2A231B;--focus:#9FA8DA;--ns:#3A3027;--a:#3FC1BF;--b:#F06292;--obs:#8C9EFF;--mod:#F2B134}}
-:root[data-theme="dark"]{--ground:#17130F;--panel:#211B15;--ink:#F1E8DA;--muted:#B3A692;--rule:#3A3027;--grid:#2A231B;--focus:#9FA8DA;--ns:#3A3027;--a:#3FC1BF;--b:#F06292;--obs:#8C9EFF;--mod:#F2B134}
+:root{--ground:#EEF1F6;--panel:#FFFFFF;--ink:#14213D;--muted:#566079;--rule:#D7DDEA;--grid:#E3E8F2;--focus:#3F51B5;--ns:#D7DDEA;--a:#0B8A6F;--b:#D1345B;--obs:#3F51B5;--mod:#C97F00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ground:#0E1424;--panel:#151C30;--ink:#E8ECF6;--muted:#9AA4BF;--rule:#26304A;--grid:#1D2540;--focus:#9FA8DA;--ns:#26304A;--a:#3FD3A8;--b:#FF6B8B;--obs:#8C9EFF;--mod:#F2B134}}
+:root[data-theme="dark"]{--ground:#0E1424;--panel:#151C30;--ink:#E8ECF6;--muted:#9AA4BF;--rule:#26304A;--grid:#1D2540;--focus:#9FA8DA;--ns:#26304A;--a:#3FD3A8;--b:#FF6B8B;--obs:#8C9EFF;--mod:#F2B134}
 *{box-sizing:border-box}
-body{margin:0;background:var(--ground);color:var(--ink);font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px;line-height:1.5;font-variant-numeric:tabular-nums}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px;line-height:1.5;font-variant-numeric:tabular-nums}
 main{max-width:1180px;margin:0 auto;padding:28px 20px 60px}
 header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
 h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
@@ -72,13 +72,19 @@ code{font-size:12px;background:var(--ground);border:1px solid var(--rule);border
 a{color:var(--ink)}
 .src{color:var(--muted);font-size:11.5px;margin-top:6px}
 #loaderr{display:none}
+
+/* ---- restyle ---- */
+body{font-size:14.5px}
+h1,h2{font-family:"Space Grotesk",system-ui,sans-serif}
+h1{font-weight:700;letter-spacing:-.015em;border-bottom:3px solid #FCA311;display:inline-block;padding-bottom:8px}
+h2{font-weight:600}
 </style>
 </head>
 <body>
 <main>
   <header>
     <div>
-      <h1>How we know</h1>
+      <h1>Sources and method</h1>
       <p class="lede" id="lede">Loading…</p>
     </div>
     <nav style="display:flex;gap:8px"><a href="../">← Back to the map</a><button class="theme" id="theme"></button></nav>
@@ -86,13 +92,13 @@ a{color:var(--ink)}
   <div class="note bad" id="loaderr"></div>
 
   <section>
-    <h2>The short version</h2>
+    <h2>In brief</h2>
     <p class="sub">Nothing on this page is typed in by hand: each figure is read from <code>data/facts.json</code>, which was extracted from the run log and the output tables. The grey note under each block names its source file.</p>
     <div class="stats" id="stats"></div>
   </section>
 
   <section>
-    <h2>What satellites saw, and what a model computes</h2>
+    <h2>Satellite record versus modelled flood</h2>
     <p class="sub">These are two kinds of evidence and the site keeps them apart. <b>Seen from space</b>: floodwater detected by satellite between 1 July and 31 August 2022 (UNOSAT, VIIRS, pixels of about 375 m, not checked on the ground). <b>Computed</b>: river floods of a chosen likelihood, once in 10, 100 or 500 years, from the Copernicus GloFAS global model. The model describes a flood of a given odds, not the one that happened. The panels show the same 16 km window around <span id="winname"></span>, the tehsil with the most flooded mapped buildings (the most exposed tehsil has almost none mapped). Solid indigo is what satellites saw; amber hatching is what the model computes.</p>
     <div class="key"><span><i class="sw" style="background:rgba(63,81,181,.5);border:1px solid #2A3990"></i>satellite water</span><span><i class="sw" style="background:repeating-linear-gradient(45deg,var(--mod) 0 1.5px,transparent 1.5px 4px);border:1px dashed var(--mod)"></i>model floodplain</span><span><i class="sw" style="background:#D32F2F"></i>wet building the model also floods</span><span><i class="sw" style="background:#6D4C41"></i>wet building the model misses</span><span><i class="sw" style="background:#9a9a9a"></i>other home-like building</span></div>
     <div class="grid4" id="small"></div>
@@ -105,13 +111,13 @@ a{color:var(--ink)}
   </section>
 
   <section>
-    <h2>From download to map: the nine steps</h2>
+    <h2>Nine steps from raw download to map</h2>
     <p class="sub">Each step is a script in <code>pk_verification/scripts</code>, run in this order. Amber outlines mark the steps that deal with the flood model.</p>
     <ol class="chain" id="chain"></ol>
   </section>
 
   <section>
-    <h2>Three ways to count people in the water</h2>
+    <h2>Three methods for counting people in the flood</h2>
     <p class="sub">The population is a modelled 100 m grid (WorldPop 2020), the flood is a polygon, and buildings come from OpenStreetMap. The three methods use the same inputs and differ in how they place people inside a cell.</p>
     <div class="scroll"><table id="methtbl"></table></div>
     <div class="src">Source: logs/run.log (06_grid_exposure.py)</div>
@@ -124,7 +130,7 @@ a{color:var(--ink)}
   </section>
 
   <section>
-    <h2>How much to trust each input</h2>
+    <h2>Confidence in each input</h2>
     <h3>Population: modelled, not a census count</h3>
     <p class="sub">WorldPop 2020 (100 m) is a statistical model of where people live, constrained to totals but not a count of people. Against the 2017 census totals of the tehsils in the study, the WorldPop sum is <b id="wpratio"></b> times as large (the years differ) and the two correlate at <b id="wpcorr"></b> across tehsils on a log scale.</p>
     <h3>Buildings: OpenStreetMap is incomplete</h3>
@@ -136,7 +142,7 @@ a{color:var(--ink)}
   </section>
 
   <section>
-    <h2>Can a regression explain who was exposed?</h2>
+    <h2>Can a regression explain exposure?</h2>
     <p class="sub">The same tests as the Dutch run, on tehsils with complete predictors (65+, 0–14, 15–24, female share, household size, log density, mean elevation). Response: the area-weighted share of the tehsil's people inside the observed extent.</p>
     <div class="scroll"><table id="regtbl"></table></div>
     <div class="src">Source: logs/run.log (07_tehsil_dataset_and_diagnostics.py)</div>
@@ -151,13 +157,13 @@ a{color:var(--ink)}
   </section>
 
   <section>
-    <h2>What we looked for and could not get</h2>
+    <h2>Searched for, not found</h2>
     <p class="sub">Variables that matter for vulnerability and were looked for but not found as open, small-area data, or not used here (see the earlier Pakistan data audit).</p>
     <div class="scroll"><table id="gaptbl"></table></div>
   </section>
 
   <section>
-    <h2>Before you quote a number</h2>
+    <h2>Before quoting a figure</h2>
     <ul class="plain" id="limits"></ul>
     <h3>Things that make a re-run awkward</h3>
     <ul class="plain" id="frict"></ul>
@@ -165,7 +171,7 @@ a{color:var(--ink)}
   </section>
 
   <section>
-    <h2>Where the data came from</h2>
+    <h2>Data origins</h2>
     <p class="sub">All files below were downloaded and opened in the run. Sizes are the sizes of the files as downloaded.</p>
     <div class="scroll"><table id="srctbl"></table></div>
     <div class="src">Basemap © OpenStreetMap contributors © CARTO.</div>
@@ -175,7 +181,7 @@ a{color:var(--ink)}
 <script>
 (function(){
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const DARK=css('--ground').toLowerCase()==='#17130f';
+const DARK=css('--ground').toLowerCase()==='#0e1424';
 const $=id=>document.getElementById(id);
 const tb=$('theme');tb.textContent=DARK?'☀ Light mode':'☾ Dark mode';
 tb.onclick=()=>{try{localStorage.setItem('theme',DARK?'light':'dark');}catch(e){}location.reload();};

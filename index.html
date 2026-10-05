@@ -4,31 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>When the Indus rose: Pakistan, 2022</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232A2118'/%3E%3Cpath d='M4 20q4-5 8 0t8 0 8 0v8H4z' fill='%23C97F00'/%3E%3C/svg%3E">
-<meta name="theme-color" content="#2A2118">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314213D'/%3E%3Cpath d='M4 20q4-5 8 0t8 0 8 0v8H4z' fill='%23C97F00'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#14213D">
 <script>try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <style>
 :root{
-  --ground:#F5EFE4; --panel:#FFFBF3; --ink:#2A2118; --muted:#6B5F52; --rule:#E3D8C6;
-  --a:#0E7C7B; --b:#C2185B; --focus:#3F51B5; --shadow:0 1px 2px rgba(60,40,10,.10),0 4px 14px rgba(60,40,10,.12);
+  --ground:#EEF1F6; --panel:#FFFFFF; --ink:#14213D; --muted:#566079; --rule:#D7DDEA;
+  --a:#0B8A6F; --b:#D1345B; --focus:#3F51B5; --shadow:0 1px 2px rgba(20,33,61,.10),0 4px 14px rgba(20,33,61,.12);
   --obs:#3F51B5; --mod:#C97F00;
   box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --ground:#17130F; --panel:#211B15; --ink:#F1E8DA; --muted:#B3A692; --rule:#3A3027;
-  --a:#3FC1BF; --b:#F06292; --focus:#9FA8DA; --obs:#8C9EFF; --mod:#F2B134; --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.45);}}
+  --ground:#0E1424; --panel:#151C30; --ink:#E8ECF6; --muted:#9AA4BF; --rule:#26304A;
+  --a:#3FD3A8; --b:#FF6B8B; --focus:#9FA8DA; --obs:#8C9EFF; --mod:#F2B134; --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.45);}}
 :root[data-theme="dark"]{
-  --ground:#17130F; --panel:#211B15; --ink:#F1E8DA; --muted:#B3A692; --rule:#3A3027;
-  --a:#3FC1BF; --b:#F06292; --focus:#9FA8DA; --obs:#8C9EFF; --mod:#F2B134; --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.45);}
+  --ground:#0E1424; --panel:#151C30; --ink:#E8ECF6; --muted:#9AA4BF; --rule:#26304A;
+  --a:#3FD3A8; --b:#FF6B8B; --focus:#9FA8DA; --obs:#8C9EFF; --mod:#F2B134; --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.45);}
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
-body{background:var(--ground);color:var(--ink);font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px;line-height:1.45;font-variant-numeric:tabular-nums}
+body{background:var(--ground);color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px;line-height:1.45;font-variant-numeric:tabular-nums}
 .app{display:grid;grid-template-columns:minmax(0,1fr) 430px;height:100%}
 .mapcol{position:relative;display:flex;flex-direction:column;min-height:0}
 .bar{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;padding:10px 14px;border-bottom:1px solid var(--rule);background:var(--panel)}
@@ -161,46 +161,67 @@ tr.sec.mod td{color:var(--mod)}
   .ctrl input[type=checkbox]{width:18px;height:18px}
 }
 .app{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+
+/* ---- restyle ---- */
+:root{--bar:#14213D}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bar:#080D1A}}
+:root[data-theme="dark"]{--bar:#080D1A}
+body{font-size:14.5px;line-height:1.5}
+h1,h2,.who strong{font-family:"Space Grotesk",system-ui,sans-serif}
+h1{font-size:26px;line-height:1.15;font-weight:700;letter-spacing:-.015em;padding-bottom:10px;margin-bottom:10px;border-bottom:3px solid #FCA311;display:inline-block}
+h2{font-size:15px;font-weight:600;margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule)}
+.who strong{font-size:26px;font-weight:600}
+.who div{border-top-width:4px;padding-top:8px}
+.bar{background:var(--bar);border-bottom:0}
+.bar label{color:#C3CCE3}
+.bar a.btn,.bar button.btn{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+.bar a.btn:hover,.bar button.btn:hover{background:rgba(255,255,255,.12)}
+.card{border-radius:14px}
+aside{border-left:0;box-shadow:-10px 0 28px rgba(20,20,50,.07)}
+.lede{font-size:15px;line-height:1.55}
+.ctrl .grp{letter-spacing:.09em}
+.chain li{border-radius:6px}
+.warn{border-radius:0 10px 10px 0}
 </style>
 </head>
 <body>
 <div class="app">
   <div class="mapcol">
     <div class="bar">
-      <label>Colour the map by<select id="metric" aria-label="Variable shown on the map"></select></label>
-      <label>Region<select id="gemsel" aria-label="Filter by province"></select></label>
+      <label>Map shows<select id="metric" aria-label="Variable shown on the map"></select></label>
+      <label>Province<select id="gemsel" aria-label="Filter by province"></select></label>
       <label>Tehsil<select id="subsel" aria-label="Filter by tehsil"></select></label>
-      <label>Find a tehsil<input id="find" list="tlist" placeholder="Type a name" autocomplete="off" aria-label="Search for a tehsil"></label><datalist id="tlist"></datalist>
+      <label>Search tehsils<input id="find" list="tlist" placeholder="Type a name" autocomplete="off" aria-label="Search for a tehsil"></label><datalist id="tlist"></datalist>
       <span class="sp"></span>
-      <a class="btn" href="analysis/">How we know →</a>
+      <a class="btn" href="analysis/">Sources &amp; method →</a>
       <button class="btn" id="theme" type="button"></button>
     </div>
     <div id="map">
-      <div class="card hint" id="hint">Tap the map to drop circle A, then circle B. Drag a pin to move it.</div>
+      <div class="card hint" id="hint">Tap twice to place circles A and B. Drag a pin to adjust it.</div>
       <div class="card legend" id="legend" aria-live="polite"></div>
       <div class="card mini" id="mini" aria-live="polite"><span class="a">A <b id="miniA">–</b></span><span class="b">B <b id="miniB">–</b></span></div>
       <div class="card ctrl" id="ctrl">
         <button id="layers" class="mob" type="button" aria-expanded="false">Layers ▾</button>
         <label class="keep">Circle size <input type="range" id="rad" min="4" max="40" step="1" value="15"> <span id="radv">15 km</span></label>
         <label class="keep">Tapping the map <select id="mode" class="mode" aria-label="What a tap on the map does"><option value="pin">moves a circle</option><option value="look">opens a tehsil</option></select></label>
-        <div class="grp obs">What satellites saw, 2022</div>
-        <label title="UNOSAT, VIIRS satellite detection, cumulative 1 July to 31 August 2022, preliminary"><input type="checkbox" id="obs" checked> Floodwater seen from space</label>
-        <label title="OpenStreetMap residential-like buildings that intersect the observed extent (centroids)"><input type="checkbox" id="bld"> Buildings under water (OSM) <span class="loading" id="bldl"></span></label>
+        <div class="grp obs">Satellite record, 2022</div>
+        <label title="UNOSAT, VIIRS satellite detection, cumulative 1 July to 31 August 2022, preliminary"><input type="checkbox" id="obs" checked> Satellite-detected floodwater</label>
+        <label title="OpenStreetMap residential-like buildings that intersect the observed extent (centroids)"><input type="checkbox" id="bld"> Flooded buildings (OSM) <span class="loading" id="bldl"></span></label>
         <div class="sub2" id="bldmode" style="display:none"><label>Colour by <select id="bmode" aria-label="Building colouring"><option value="class">Flooded in 2022</option><option value="cap">Caught by the scenario?</option></select></label></div>
-        <div class="grp mod">What models say, not 2022</div>
-        <label title="JRC / CEMS GloFAS global river flood hazard map, depth of 0.1 m or more"><input type="checkbox" id="ror"> Scenario floodplain <span class="loading" id="rorl"></span></label>
-        <div class="sub2"><label>Flood odds <select id="tsel" aria-label="Scenario return period"><option value="10">1-in-10-yr</option><option value="100" selected>1-in-100-yr</option><option value="500">1-in-500-yr</option></select></label></div>
-        <label class="keep">Strength <input type="range" id="mop" min="15" max="100" value="90" aria-label="Opacity of the scenario layers"></label>
-        <button id="blink" type="button" title="Flash the scenario on and off over the satellite water to compare them">Blink: seen vs computed</button>
+        <div class="grp mod">Model scenarios, not 2022</div>
+        <label title="JRC / CEMS GloFAS global river flood hazard map, depth of 0.1 m or more"><input type="checkbox" id="ror"> Modelled floodplain <span class="loading" id="rorl"></span></label>
+        <div class="sub2"><label>Return period <select id="tsel" aria-label="Scenario return period"><option value="10">1-in-10-yr</option><option value="100" selected>1-in-100-yr</option><option value="500">1-in-500-yr</option></select></label></div>
+        <label class="keep">Opacity <input type="range" id="mop" min="15" max="100" value="90" aria-label="Opacity of the scenario layers"></label>
+        <button id="blink" type="button" title="Flash the scenario on and off over the satellite water to compare them">Flicker: satellite vs model</button>
         <label><input type="checkbox" id="dep"> Scenario depth bands <span class="loading" id="depl"></span></label>
-        <div class="grp ctx">People and buildings</div>
-        <label title="2 km cells summed from the WorldPop 100 m grid; drawn as circles"><input type="checkbox" id="grid"> People per 2 km cell <span class="loading" id="gridl"></span></label>
+        <div class="grp ctx">Population &amp; buildings</div>
+        <label title="2 km cells summed from the WorldPop 100 m grid; drawn as circles"><input type="checkbox" id="grid"> Population per 2 km cell <span class="loading" id="gridl"></span></label>
         <label><input type="checkbox" id="sb" checked> Tehsil lines</label>
         <label><input type="checkbox" id="pv" checked> Region lines</label>
-        <div class="grp ctx">Backdrop</div>
-        <label title="Terrain tiles, hillshade"><input type="checkbox" id="relief"> Shaded terrain</label>
+        <div class="grp ctx">Map backdrop</div>
+        <label title="Terrain tiles, hillshade"><input type="checkbox" id="relief"> Hillshade terrain</label>
         <label><input type="checkbox" id="bm" checked> Basemap</label>
-        <button id="reset">Clear circles</button>
+        <button id="reset">Remove circles</button>
       </div>
       <div class="tip" id="tip"></div>
     </div>
@@ -212,26 +233,26 @@ tr.sec.mod td{color:var(--mod)}
       <div class="a"><span>Circle A</span><strong id="popA">–</strong><span id="subA">Tap the map</span></div>
       <div class="b"><span>Circle B</span><strong id="popB">–</strong><span id="subB">then tap again</span></div>
     </div>
-    <h2>Jump to a hotspot</h2>
+    <h2>Most-flooded tehsils</h2>
     <div class="chips" id="chips" aria-label="Most flooded tehsils"></div>
     <div class="spot" id="spot"><p class="where" style="margin:0">Tap a hotspot above, search for a tehsil, or set “Tapping the map” to “opens a tehsil” and tap any area to see its profile here.</p></div>
-    <h2>Who is inside the circles: ages</h2>
+    <h2>Age mix inside the circles</h2>
     <div class="pyr-key"><span><i style="background:var(--a)"></i>Circle A</span><span><i style="border:2px solid var(--b);height:9px"></i>Circle B</span><span><i style="background:var(--rule)"></i><span class="alllab"></span></span></div>
     <svg id="pyr" viewBox="0 0 400 200" role="img" aria-label="Age profile in five groups, comparing area A, area B and the whole study area"></svg>
     <p class="note">Five age bands taken from the 2017 census at tehsil level, the smallest area with public age data, and blended by how many people the circle holds in each tehsil. Treat it as an area average, not a head count, and remember it predates the flood by five years.</p>
     <p class="note">Tehsils a circle touches are tinted in its colour: the deeper the tint, the more of that tehsil's 2 km cells sit inside the circle.</p>
-    <h2>The numbers inside each circle</h2>
+    <h2>Figures for each circle</h2>
     <table id="tbl"><colgroup><col><col style='width:62px'><col style='width:62px'><col style='width:90px'></colgroup><thead><tr><th>Indicator</th><th class="a">A</th><th class="b">B</th><th style='padding-left:8px' class="alllab"></th></tr></thead><tbody></tbody></table>
-    <div class="warn" id="obsnote"><b>Seen from space.</b> The indigo layer is floodwater detected by satellite between 1 July and 31 August 2022 (UNOSAT, VIIRS, pixels of about 375 m). It is a first pass that nobody has checked on the ground, and cloud, tree cover or dense housing can hide water. "In the water" below simply means inside this layer.</div>
-    <div class="warn mod"><b>Computed, not observed.</b> The amber hatched layers and depth bands come from a global river-flood model run for 1-in-10, 1-in-100 and 1-in-500-year floods. They show what such a flood could do, not what 2022 did, and they sit in their own amber rows below.</div>
-    <div class="warn bad"><b>Handle with care.</b> People per cell are WorldPop's 2020 estimate, not a count. OpenStreetMap barely covers rural Pakistan, so building counts are minimums, and the building method falls back to the cell centre wherever no building is mapped.</div>
-    <h2>Behind the numbers</h2>
+    <div class="warn" id="obsnote"><b>Satellite record.</b> The indigo layer is floodwater detected by satellite between 1 July and 31 August 2022 (UNOSAT, VIIRS, pixels of about 375 m). It is a first pass that nobody has checked on the ground, and cloud, tree cover or dense housing can hide water. "In the water" below simply means inside this layer.</div>
+    <div class="warn mod"><b>Modelled, not observed.</b> The amber hatched layers and depth bands come from a global river-flood model run for 1-in-10, 1-in-100 and 1-in-500-year floods. They show what such a flood could do, not what 2022 did, and they sit in their own amber rows below.</div>
+    <div class="warn bad"><b>Read with caution.</b> People per cell are WorldPop's 2020 estimate, not a count. OpenStreetMap barely covers rural Pakistan, so building counts are minimums, and the building method falls back to the cell centre wherever no building is mapped.</div>
+    <h2>Source trail</h2>
     <ul class="chain" id="chain"></ul>
     <div class="foot">
       <p>Floodwater: UNOSAT (HDX), CC BY-SA. Population: WorldPop 100 m 2020 (CC BY 4.0). Tehsil boundaries and 2017 census tables (age by sex, households): U.S. Census Bureau compilation of PBS data (HDX, CC BY). Province outlines: OCHA COD-AB (CC BY-IGO). Buildings: OpenStreetMap contributors via HOT export of 6 May 2026 (ODbL). Modelled floods: Copernicus Emergency Management Service, GloFAS global river flood hazard maps v2.1.2 (CC BY 4.0). Terrain: Mapzen terrain tiles on AWS. Basemap © OpenStreetMap contributors © CARTO.</p>
       <p>A circle adds up every 2 km cell (built from the 100 m grid) whose centre falls inside it. Method A scales each 100 m cell by how much of it is under water; B counts a cell whole if its centre is wet; C shares a cell's people among its flooded mapped buildings, and uses B where none are mapped.</p>
       <p>The all-tehsils column adds up the 2 km cells and is within 0.1% of the project totals (cells with under one person and pixels outside tehsil outlines are not included); the project totals are on the evidence page.</p>
-      <p>The modelled layers, the flooded-building points and the 2 km cells are simplified or aggregated copies made for the browser. All figures are computed from the full-resolution data. Full detail and limits: <a href="analysis/">How we know</a>.</p>
+      <p>The modelled layers, the flooded-building points and the 2 km cells are simplified or aggregated copies made for the browser. All figures are computed from the full-resolution data. Full detail and limits: <a href="analysis/">Sources &amp; method</a>.</p>
     </div>
   </aside>
 </div>
@@ -240,7 +261,7 @@ tr.sec.mod td{color:var(--mod)}
 // Pakistan flood explorer. Page flow: load data -> build METRICS/filters -> map.on('load') adds layers and pins ->
 // every interaction ends in recolour() (map classes) and/or update() (side panel). Heavy layers load on first use.
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const DARK=css('--ground').toLowerCase()==='#17130f';
+const DARK=css('--ground').toLowerCase()==='#0e1424';
 const $=id=>document.getElementById(id);
 let SAVED=null;try{SAVED=JSON.parse(sessionStorage.getItem('pkmapstate'));sessionStorage.removeItem('pkmapstate');}catch(e){}
 let metric,activeProv=null,activeT=null,map,R=15000,areas=[],baseLayers=[],hoverId=null,lastDrag=0;
@@ -267,16 +288,16 @@ BU.features.forEach((f,i)=>{f.id=i;f.properties.i=i;});
 const NBU=B.length, cols=CE.cols, X={};cols.forEach((c,i)=>X[c]=i);
 const C=CE.rows;
 const centroid=f=>d3.geoCentroid(f);
-$('lede').textContent=`In the monsoon of 2022, satellites saw floodwater over about ${fv('extent_km2').toLocaleString()} km² of Pakistan, touching ${fv('n_study')} of ${fv('n_tehsil')} tehsils. Drop two circles anywhere and compare who lives inside them, or switch on the computed flood scenarios to see how far they agree with what was seen.`;
+$('lede').textContent=`Monsoon 2022: satellites detected floodwater across about ${fv('extent_km2').toLocaleString()} km² of Pakistan, reaching ${fv('n_study')} of ${fv('n_tehsil')} tehsils. Place two circles anywhere to compare the people inside each, or turn on the modelled scenarios to test how closely they match the satellite record.`;
 d3.select('#chain').selectAll('li').data(['Downloads','Study area','OSM buildings','Flood model','Terrain','People on the grid','Tehsil table','Statistics','This site']).join('li').text(d=>d);
 const P=v=>v.toFixed(1)+'%', N0=v=>Math.round(v).toLocaleString();
 const METRICS=[
-  {g:'Hit by the 2022 flood',k:'shA',l:'Share of a tehsil\'s people in the water',f:b=>b.st?b.shA:NaN,fmt:v=>(v*100).toFixed(v<.1?1:0)+'%',r:['#E8EAF6','#C5CAE9','#7986CB','#3F51B5','#1A237E'],zero:true,none:'Dry: no flood water here',unit:'method A, WorldPop people'},
-  {g:'Hit by the 2022 flood',k:'popA',l:'People in the water',f:b=>b.st?b.popA:NaN,fmt:N0,r:['#E8EAF6','#C5CAE9','#7986CB','#3F51B5','#1A237E'],zero:true,none:'Dry: no flood water here',unit:'area-weighted (A), modelled people'},
-  {g:'Hit by the 2022 flood',k:'nbf',l:'Mapped buildings in the water',f:b=>b.st?b.nbf:NaN,fmt:N0,r:'PuRd',zero:true,none:'No mapped building in the water',unit:'a minimum: OSM is patchy'},
-  {g:'What models say, not 2022',k:'sh100',l:'People on the 1-in-100-year floodplain',f:b=>b.sh100,fmt:v=>(v*100).toFixed(v<.1?1:0)+'%',r:['#FCEFC8','#F7D486','#E8AE3C','#C97F00','#7A3E00'],zero:true,none:'Outside the scenario area',unit:'JRC river-flood scenario, not 2022'},
-  {g:'What models say, not 2022',k:'sh10',l:'People on the 1-in-10-year floodplain',f:b=>b.sh10,fmt:v=>(v*100).toFixed(v<.1?1:0)+'%',r:['#FCEFC8','#F7D486','#E8AE3C','#C97F00','#7A3E00'],zero:true,none:'Outside the scenario area',unit:'JRC river-flood scenario, not 2022'},
-  {g:'What models say, not 2022',k:'sh500',l:'People on the 1-in-500-year floodplain',f:b=>b.sh500,fmt:v=>(v*100).toFixed(v<.1?1:0)+'%',r:['#FCEFC8','#F7D486','#E8AE3C','#C97F00','#7A3E00'],zero:true,none:'Outside the scenario area',unit:'JRC river-flood scenario, not 2022'},
+  {g:'Flooded in 2022',k:'shA',l:'Share of a tehsil\'s population inside the flood',f:b=>b.st?b.shA:NaN,fmt:v=>(v*100).toFixed(v<.1?1:0)+'%',r:['#E8EAF6','#C5CAE9','#7986CB','#3F51B5','#1A237E'],zero:true,none:'Dry: no flood water here',unit:'method A, WorldPop people'},
+  {g:'Flooded in 2022',k:'popA',l:'People inside the flood',f:b=>b.st?b.popA:NaN,fmt:N0,r:['#E8EAF6','#C5CAE9','#7986CB','#3F51B5','#1A237E'],zero:true,none:'Dry: no flood water here',unit:'area-weighted (A), modelled people'},
+  {g:'Flooded in 2022',k:'nbf',l:'Mapped buildings inside the flood',f:b=>b.st?b.nbf:NaN,fmt:N0,r:'PuRd',zero:true,none:'No mapped building in the water',unit:'a minimum: OSM is patchy'},
+  {g:'Model scenarios, not 2022',k:'sh100',l:'People on the 1-in-100-year floodplain',f:b=>b.sh100,fmt:v=>(v*100).toFixed(v<.1?1:0)+'%',r:['#FCEFC8','#F7D486','#E8AE3C','#C97F00','#7A3E00'],zero:true,none:'Outside the scenario area',unit:'JRC river-flood scenario, not 2022'},
+  {g:'Model scenarios, not 2022',k:'sh10',l:'People on the 1-in-10-year floodplain',f:b=>b.sh10,fmt:v=>(v*100).toFixed(v<.1?1:0)+'%',r:['#FCEFC8','#F7D486','#E8AE3C','#C97F00','#7A3E00'],zero:true,none:'Outside the scenario area',unit:'JRC river-flood scenario, not 2022'},
+  {g:'Model scenarios, not 2022',k:'sh500',l:'People on the 1-in-500-year floodplain',f:b=>b.sh500,fmt:v=>(v*100).toFixed(v<.1?1:0)+'%',r:['#FCEFC8','#F7D486','#E8AE3C','#C97F00','#7A3E00'],zero:true,none:'Outside the scenario area',unit:'JRC river-flood scenario, not 2022'},
   {g:'Who lives there (census 2017)',k:'pop',l:'Population, 2017 census',f:b=>b.pop,fmt:N0,r:'YlGnBu'},
   {g:'Who lives there (census 2017)',k:'dens',l:'Residents per km²',f:b=>b.dens,fmt:N0,r:'PuBuGn'},
   {g:'Who lives there (census 2017)',k:'p65',l:'Aged 65 and over',f:b=>b.p65,fmt:P,r:'PuBuGn'},
@@ -372,7 +393,7 @@ loadStyle().then(style=>{
     if(SAVED&&SAVED.v)map.jumpTo({center:SAVED.v.c,zoom:SAVED.v.z});
     if(SAVED&&SAVED.T)$('tsel').value=SAVED.T;if(SAVED&&SAVED.bm)$('bmode').value=SAVED.bm;
     areas.forEach(addMarker);
-    $('hint').textContent='Two circles are already placed. Drag a pin, or tap to move the nearer one.';
+    $('hint').textContent='Both circles are set. Drag a pin, or tap to bring the closer one to that spot.';
     drawRings();update();
     if(SAVED&&SAVED.on)['obs','bld','ror','dep','grid','sb','pv','relief','bm'].forEach(id=>{const c=$(id);if(c&&c.checked!==SAVED.on.includes(id)){c.checked=SAVED.on.includes(id);c.dispatchEvent(new Event('change'));}});
     window.__test={map,areas:()=>areas.map(({id,lon,lat})=>({id,lon,lat})),agg:(a,r)=>{const R0=R;R=r;try{return agg(a);}finally{R=R0;}},B,C,X,ALL:()=>ALL};
@@ -466,7 +487,7 @@ function wire(){
     for(let k=0;k<6;k++){const on=k%2===1;vis(['ror-fill','ror-line'],on);await new Promise(r=>setTimeout(r,650));}
     vis(['ror-fill','ror-line'],true);blinking=false;});
   $('rad').addEventListener('input',e=>{R=+e.target.value*1000;$('radv').textContent=e.target.value+' km';drawRings();schedule();});
-  $('reset').addEventListener('click',()=>{areas.forEach(a=>a.marker.remove());areas.length=0;const h=$('hint');h.style.display=null;h.textContent='Tap the map to drop circle A, then circle B. Drag a pin to move it.';drawRings();update();});
+  $('reset').addEventListener('click',()=>{areas.forEach(a=>a.marker.remove());areas.length=0;const h=$('hint');h.style.display=null;h.textContent='Tap twice to place circles A and B. Drag a pin to adjust it.';drawRings();update();});
   gsel.on('change',function(){activeProv=this.value||null;activeT=null;fillT();applyFilter();});
   ssel.on('change',function(){activeT=this.value||null;applyFilter();});
 }
@@ -525,7 +546,7 @@ function drawLegend(){
   L.append('div').attr('class','row').call(r=>{r.append('span').attr('class','sw hol');r.append('span').text(metric.none||'No data');});
   const sec=(cls,title)=>{L.append('div').attr('class','sep');L.append('h4').attr('class',cls).text(title);};
   const row=(css_,t,fn)=>L.append('div').attr('class','row').call(r=>{const s=r.append('span').attr('class','sw'+(fn?' '+fn:''));if(css_)s.style('background',css_);r.append('span').text(t);});
-  if($('obs').checked){sec('obs','Seen from space, 2022');row(null,'Floodwater (UNOSAT, VIIRS, unchecked on the ground)','obs');}
+  if($('obs').checked){sec('obs','Satellite record, 2022');row(null,'Detected floodwater (UNOSAT, VIIRS; not field-verified)','obs');}
   const T=$('tsel').value;
   if($('ror').checked||$('dep').checked){sec('mod','What a model says, not 2022');if($('ror').checked)row(null,'Floodplain of a 1-in-'+T+'-year river flood','mod');
     if($('dep').checked){DEPCOLS.forEach((c,i)=>row(c,'Water '+DEPLAB[i]+' deep'));}}
@@ -565,7 +586,7 @@ function share(w,i){return w&&w[i]>0&&cellsPerT[i]?Math.round(Math.min(1,w[i]/ce
 let raf=0;function schedule(){if(!raf)raf=requestAnimationFrame(()=>{raf=0;update();});}
 const pct=(n,d)=>d>0?n/d:NaN;
 const ROWS=[
-  ['sec','Seen from space, 2022'],
+  ['sec','Satellite record, 2022'],
   ['People in 2 km cells (WorldPop 2020)',o=>o.pop,'n','Modelled population, not a count'],
   ['In the water (method A)',o=>o.popA,'n','Each 100 m cell scaled by how much of it is wet'],
   ['In the water (method B)',o=>o.popB,'n','Whole cell counted if its centre is wet'],
@@ -579,7 +600,7 @@ const ROWS=[
   ['Average household size',o=>o.hhs,'d'],
   ['Residents per km²',o=>o.dens,'n'],
   ['Mean elevation',o=>o.elev,'m','Metres, terrain tiles'],
-  ['sec mod','What models say, not 2022'],
+  ['sec mod','Model scenarios, not 2022'],
   ['On the 1-in-10-year floodplain',o=>o.r10,'n','JRC river-flood model','mod'],
   ['On the 1-in-100-year floodplain',o=>o.r100,'n','','mod'],
   ['On the 1-in-500-year floodplain',o=>o.r500,'n','','mod']
